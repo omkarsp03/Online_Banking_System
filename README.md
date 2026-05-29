@@ -1,11 +1,7 @@
 # 🏦 Online Banking System
-    style M fill:#0f3460,stroke:#e94560,color:#fff
-    style O fill:#16a34a,stroke:#fff,color:#fff
-    style P fill:#16a34a,stroke:#fff,color:#fff
-```
-
 ### Beneficiary Lifecycle
 
+**A secure, enterprise-grade online banking REST API** built with Spring Boot 3, featuring JWT authentication, role-based access control, AES-256 data encryption, automated interest calculation, PDF/CSV statement generation, real-time email notifications, and comprehensive audit logging.
 ```mermaid
 stateDiagram-v2
     [*] --> PENDING: Customer adds beneficiary
