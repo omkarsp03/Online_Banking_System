@@ -1,0 +1,2 @@
+-- Flyway baseline migration.
+-- Schema definitions for users, accounts, transactions, beneficiaries, roles, and audit logs will be added in later steps.

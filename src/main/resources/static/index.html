@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Online Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Page -->
+        <div id="login-page" class="page active">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="logo">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="#2563eb"/>
+                            <path d="M14 24h20M24 14v20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <h1>SecureBank</h1>
+                    </div>
+                    <p class="subtitle">Your trusted online banking partner</p>
+                    
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="login-email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </form>
+                    
+                    <p class="auth-link">Don't have an account? <a href="#" onclick="showPage('register-page')">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="logo">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="#2563eb"/>
+                            <path d="M14 24h20M24 14v20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <h1>SecureBank</h1>
+                    </div>
+                    <p class="subtitle">Create your account today</p>
+                    
+                    <form id="register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="register-firstName" required placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" id="register-lastName" required placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="register-email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="register-phone" required placeholder="+1234567890">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="register-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Account</button>
+                    </form>
+                    
+                    <p class="auth-link">Already have an account? <a href="#" onclick="showPage('login-page')">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <!-- Navigation -->
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="#2563eb"/>
+                            <path d="M14 24h20M24 14v20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <span>SecureBank</span>
+                    </div>
+                    <div class="nav-menu">
+                        <span id="user-greeting">Welcome, User</span>
+                        <button class="btn btn-secondary btn-small" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="dashboard-container">
+                <div class="sidebar">
+                    <div class="sidebar-nav">
+                        <button class="sidebar-item active" data-section="overview" onclick="showSection('overview')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18M9 21V9"/>
+                            </svg>
+                            Overview
+                        </button>
+                        <button class="sidebar-item" data-section="accounts" onclick="showSection('accounts')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                <line x1="2" y1="10" x2="22" y2="10"/>
+                            </svg>
+                            Accounts
+                        </button>
+                        <button class="sidebar-item" data-section="transactions" onclick="showSection('transactions')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                                <polyline points="16 7 22 7 22 13"/>
+                            </svg>
+                            Transactions
+                        </button>
+                        <button class="sidebar-item" data-section="transfer" onclick="showSection('transfer')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                            Transfer
+                        </button>
+                        <button class="sidebar-item" data-section="beneficiaries" onclick="showSection('beneficiaries')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            Beneficiaries
+                        </button>
+                    </div>
+                </div>
+
+                <main class="main-content">
+                    <!-- Overview Section -->
+                    <section id="overview" class="content-section active">
+                        <h2>Good <span id="greeting-time">day</span>, <span id="user-name">User</span>!</h2>
+                        <p class="section-desc">Here's what's happening with your accounts today.</p>
+                        
+                        <div class="cards-grid">
+                            <div class="card stats-card">
+                                <div class="stats-icon blue">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                </div>
+                                <div class="stats-content">
+                                    <p class="stats-label">Total Balance</p>
+                                    <h3 id="total-balance">$0.00</h3>
+                                </div>
+                            </div>
+                            <div class="card stats-card">
+                                <div class="stats-icon green">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                        <polyline points="17 6 23 6 23 12"/>
+                                    </svg>
+                                </div>
+                                <div class="stats-content">
+                                    <p class="stats-label">Income</p>
+                                    <h3 id="total-income">$0.00</h3>
+                                </div>
+                            </div>
+                            <div class="card stats-card">
+                                <div class="stats-icon red">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 6 9.5 15.5 14.5 10.5 22 18"/>
+                                        <polyline points="7 6 1 6 1 12"/>
+                                    </svg>
+                                </div>
+                                <div class="stats-content">
+                                    <p class="stats-label">Expenses</p>
+                                    <h3 id="total-expenses">$0.00</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="btn btn-primary" onclick="showSection('accounts')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                    <line x1="2" y1="10" x2="22" y2="10"/>
+                                </svg>
+                                New Account
+                            </button>
+                            <button class="btn btn-secondary" onclick="showSection('transfer')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                    <polyline points="12 5 19 12 12 19"/>
+                                </svg>
+                                Transfer Funds
+                            </button>
+                        </div>
+
+                        <div class="section-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        <div id="recent-transactions" class="transactions-list">
+                            <p class="empty-state">No recent transactions</p>
+                        </div>
+                    </section>
+
+                    <!-- Accounts Section -->
+                    <section id="accounts" class="content-section">
+                        <div class="section-header">
+                            <h2>My Accounts</h2>
+                            <button class="btn btn-primary" onclick="openNewAccountModal()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Create Account
+                            </button>
+                        </div>
+                        <div id="accounts-list" class="cards-grid">
+                            <p class="empty-state">No accounts yet. Create your first account!</p>
+                        </div>
+                    </section>
+
+                    <!-- Transactions Section -->
+                    <section id="transactions" class="content-section">
+                        <div class="section-header flex-header">
+                            <h2>Transaction History</h2>
+                            <div class="export-actions">
+                                <select id="export-account" class="select-small" required>
+                                    <option value="">Select Account</option>
+                                </select>
+                                <select id="export-format" class="select-small">
+                                    <option value="pdf">PDF</option>
+                                    <option value="csv">CSV</option>
+                                </select>
+                                <button class="btn btn-secondary btn-small" onclick="handleExportStatement()">Export</button>
+                            </div>
+                        </div>
+                        <div id="transactions-list" class="transactions-list">
+                            <p class="empty-state">No transactions yet</p>
+                        </div>
+                        <div class="pagination-controls" id="transactions-pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 10px 0;">
+                            <button class="btn" id="transactions-prev-btn" onclick="changeTransactionsPage(-1)" disabled>Previous</button>
+                            <span id="transactions-page-num" style="font-weight: 500; color: var(--text-secondary);">Page 1 of 1</span>
+                            <button class="btn" id="transactions-next-btn" onclick="changeTransactionsPage(1)" disabled>Next</button>
+                        </div>
+                    </section>
+
+                    <!-- Transfer Section -->
+                    <section id="transfer" class="content-section">
+                        <h2>Transfer Funds</h2>
+                        <p class="section-desc">Send money between your accounts or to other beneficiaries.</p>
+                        
+                        <div class="card">
+                            <form id="transfer-form">
+                                <div class="form-group">
+                                    <label>From Account</label>
+                                    <select id="transfer-from" required>
+                                        <option value="">Select account</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>To Account</label>
+                                    <input type="text" id="transfer-to" required placeholder="Enter account number">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Amount</label>
+                                        <input type="number" id="transfer-amount" step="0.01" min="0.01" required placeholder="0.00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Currency</label>
+                                        <select id="transfer-currency">
+                                            <option value="USD" selected>USD</option>
+                                            <option value="EUR">EUR</option>
+                                            <option value="GBP">GBP</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description (optional)</label>
+                                    <input type="text" id="transfer-description" placeholder="What's this for?">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Money</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Beneficiaries Section -->
+                    <section id="beneficiaries" class="content-section">
+                        <div class="section-header">
+                            <h2>My Beneficiaries</h2>
+                            <button class="btn btn-primary" onclick="openNewBeneficiaryModal()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Add Beneficiary
+                            </button>
+                        </div>
+                        <p class="section-desc">Manage your list of trusted accounts for instant funds transfer.</p>
+                        
+                        <div class="table-container card">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Account Number</th>
+                                        <th>Bank Name</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="beneficiaries-list">
+                                    <tr>
+                                        <td colspan="5" class="empty-state text-center">No beneficiaries added yet.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Account Modal -->
+    <div id="account-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Account</h3>
+                <button class="modal-close" onclick="closeModal('account-modal')">&times;</button>
+            </div>
+            <form id="new-account-form">
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <select id="account-type" required>
+                        <option value="CHECKING">Checking</option>
+                        <option value="SAVINGS">Savings</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Currency</label>
+                    <select id="account-currency">
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="deposit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Deposit Funds</h3>
+                <button class="modal-close" onclick="closeModal('deposit-modal')">&times;</button>
+            </div>
+            <form id="deposit-form">
+                <input type="hidden" id="deposit-accountNumber">
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="deposit-amount" step="0.01" min="0.01" required placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="deposit-description" placeholder="Deposit description" value="Quick deposit">
+                </div>
+                <button type="submit" class="btn btn-primary">Deposit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div id="withdraw-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Withdraw Funds</h3>
+                <button class="modal-close" onclick="closeModal('withdraw-modal')">&times;</button>
+            </div>
+            <form id="withdraw-form">
+                <input type="hidden" id="withdraw-accountNumber">
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="withdraw-amount" step="0.01" min="0.01" required placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="withdraw-description" placeholder="Withdrawal description" value="Quick withdrawal">
+                </div>
+                <button type="submit" class="btn btn-primary">Withdraw</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Beneficiary Modal -->
+    <div id="beneficiary-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Beneficiary</h3>
+                <button class="modal-close" onclick="closeModal('beneficiary-modal')">&times;</button>
+            </div>
+            <form id="new-beneficiary-form">
+                <div class="form-group">
+                    <label>Beneficiary Name</label>
+                    <input type="text" id="beneficiary-name" required placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label>Account Number</label>
+                    <input type="text" id="beneficiary-account" required placeholder="Enter bank account number">
+                </div>
+                <div class="form-group">
+                    <label>Bank Name</label>
+                    <input type="text" id="beneficiary-bank" required placeholder="Enter bank name">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Beneficiary</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notification-container"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

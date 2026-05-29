@@ -1,0 +1,24 @@
+# Maven
+/target/
+
+# IntelliJ
+*.iml
+.idea/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
